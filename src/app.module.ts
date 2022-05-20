@@ -17,8 +17,8 @@ import { Verification } from './users/entities/verification.entity';
 import { MailModule } from './mail/mail.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
-import { Category } from './restaurants/entities/category.entity';
 import { AuthModule } from './auth/auth.module';
+import { Category } from './restaurants/entities/category.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
