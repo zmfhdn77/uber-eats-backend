@@ -20,6 +20,9 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { AuthModule } from './auth/auth.module';
 import { Category } from './restaurants/entities/category.entity';
 import { Dish } from './restaurants/entities/dish.entity';
+import { OrdersModule } from './orders/orders.module';
+import { Order } from './orders/entities/order.entity';
+import { OrderItem } from './orders/entities/order-item.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -53,7 +56,15 @@ import { Dish } from './restaurants/entities/dish.entity';
       database: process.env.DB_NAME,
       synchronize: process.env.NODE_ENV !== 'prod',
       logging: process.env.NODE_ENV !== 'prod',
-      entities: [User, Verification, Restaurant, Category, Dish],
+      entities: [
+        User,
+        Verification,
+        Restaurant,
+        Category,
+        Dish,
+        Order,
+        OrderItem,
+      ],
     }),
     AuthModule,
     UsersModule,
@@ -66,6 +77,7 @@ import { Dish } from './restaurants/entities/dish.entity';
       domain: process.env.MAILGUN_DOMAIN_NAME,
     }),
     RestaurantsModule,
+    OrdersModule,
   ],
   controllers: [],
   providers: [],
