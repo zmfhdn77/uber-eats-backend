@@ -36,6 +36,7 @@ export class Order extends CoreEntity {
   @Field((type) => User, { nullable: true })
   @ManyToOne((type) => User, (user) => user.orders, {
     nullable: true,
+    eager: true,
     onDelete: 'SET NULL',
   })
   customer?: User;
@@ -46,6 +47,7 @@ export class Order extends CoreEntity {
   @Field((type) => User, { nullable: true })
   @ManyToOne((type) => User, (user) => user.rides, {
     nullable: true,
+    eager: true,
     onDelete: 'SET NULL',
   })
   driver?: User;
@@ -56,13 +58,14 @@ export class Order extends CoreEntity {
   @Field((type) => Restaurant, { nullable: true })
   @ManyToOne((type) => Restaurant, (restaurant) => restaurant.orders, {
     nullable: true,
+    eager: true,
     onDelete: 'SET NULL',
   })
   @Field((type) => Restaurant)
   restaurant?: Restaurant;
 
   @Field((type) => [OrderItem])
-  @ManyToMany((type) => OrderItem)
+  @ManyToMany((type) => OrderItem, { eager: true })
   @JoinTable()
   items: OrderItem[];
 
