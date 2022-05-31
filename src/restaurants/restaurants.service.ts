@@ -69,7 +69,7 @@ export class RestaurantService {
 
   async myRestaurants(owner: User): Promise<MyRestaurantsOutput> {
     try {
-      const restaurants = await this.restaurants.find({ ownerId: owner.id });
+      const restaurants = await this.restaurants.find({ owner });
       if (!restaurants) {
         return {
           ok: false,
